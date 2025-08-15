@@ -20,7 +20,7 @@ import { EvController } from './ev/ev.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 @Module({
   imports: [EmployeeModule, CatagoryModule, StudentModule, CostomerModule,ConfigModule.forRoot()
-  , MongooseModule.forRoot(process.env.MONGO_URL)],
+  , MongooseModule.forRoot(process.env.MONGO_URL || 'mongodb://localhost:27017/')],
   controllers: [AppController, UserController, ProductController, MynameController, UserRoleController, ExceptionController, DatabaseController, EvController],
   providers: [AppService, ProductService, DatabaseService, EvService],
 })
