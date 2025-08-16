@@ -12,4 +12,19 @@ export class StudentService {
     const newStudent = new this.StudentModel(data);
     return newStudent.save();
   }
+  async getAllStudent(): Promise<Student[]> {
+    return this.StudentModel.find().exec();
+  }
+  async getStudentById(id: string): Promise<Student | null> {
+    return this.StudentModel.findById(id).exec();
+  }
+  async updateStudent(id:string ,data:Partial<Student>):Promise<Student | null>{
+return this.StudentModel.findByIdAndUpdate(id,data,{new:true}).exec()
+  }
+  async patchStudent(id:string ,data:Partial<Student>):Promise<Student | null>{
+return this.StudentModel.findByIdAndUpdate(id,data,{new:true}).exec()
+  }
+  async deleteStudent(id:string ):Promise<Student | null>{
+    return this.StudentModel.findByIdAndDelete(id).exec()
+  }
 }
